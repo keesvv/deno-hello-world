@@ -3,7 +3,7 @@ My first Deno app.
 
 ## Usage
 ```bash
-deno run index.ts
+make run
 ```
 
 ## License
