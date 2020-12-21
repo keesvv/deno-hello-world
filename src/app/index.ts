@@ -1,20 +1,16 @@
 import { oak, signal } from '../../deps.ts';
+import { NotFoundHandler } from '../middleware/index.ts';
 
 const { Application, Router } = oak;
 
 const app = new Application();
 const router = new Router();
 
-const notFoundHandler = (context: oak.Context) => {
-  context.response.status = 404;
-  context.response.body = 'Not found';
-}
-
 // Listen on port 8080
 app
   .use(
     router.routes(),
-    notFoundHandler
+    NotFoundHandler
   )
   .listen({
     port: 8080
