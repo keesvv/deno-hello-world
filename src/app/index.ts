@@ -1,10 +1,9 @@
 import { oak, signal } from '../../deps.ts';
 import { NotFoundHandler } from '../middleware/index.ts';
+import { router } from '../router/index.ts';
 
-const { Application, Router } = oak;
-
-const app = new Application();
-const router = new Router();
+// Instantiate an application
+const app = new oak.Application();
 
 // Listen on port 8080
 app
@@ -12,9 +11,7 @@ app
     router.routes(),
     NotFoundHandler
   )
-  .listen({
-    port: 8080
-  });
+  .listen({ port: 8080 });
 
 // Handle POSIX signals
 const sig = signal.signal(
